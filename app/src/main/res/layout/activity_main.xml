@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/chatbot" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Kau Guide"
+        android:textColor="#005003"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_25sdp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kau Chatbot"
+        android:layout_gravity="center"
+        android:textColor="#008005"
+        android:textSize="@dimen/_20sdp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="لديك حساب بالفعل!"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="19dp"
+        />
+
+
+    <Button
+        android:id="@+id/button_sign_in"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background_green"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:text="تسجيل الدخول"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="مستخدم جديد . قم بتسجيل الآن !"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="16dp"
+        />
+
+    <Button
+        android:id="@+id/button_sign_up"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background_green"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:text="تسجيل"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/button_sign_as_guist"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background_lightgreen"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:text="أدخل كزائر"
+        android:textStyle="bold"/>
+
+
+
+</LinearLayout>
