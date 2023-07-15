@@ -109,14 +109,17 @@ public class ChatActivity extends AppCompatActivity {
                 }
 
                 // Classify the user's input using the ChatbotModel class
-                String tag = chatbotModel.getTag(userMsgEdt.getText().toString());
+                //String tag = chatbotModel.getTag(userMsgEdt.getText().toString());
 
                 // Generate a response based on the tag
-                String response = generateResponse(tag);
+                //String response = generateResponse(tag);
 
+                String classTag=chatbotModel.predictClass(userMsgEdt.getText().toString());
+                System.out.println("UserMsg: "+userMsgEdt.getText().toString());
+                System.out.println("Predict class : "+classTag);
                 // Add the user's input and the generated response to the chat list
                 chatsModelArrayList.add(new ChatsModel(userMsgEdt.getText().toString(), USER_KEY));
-                chatsModelArrayList.add(new ChatsModel(response, BOT_KEY));
+                chatsModelArrayList.add(new ChatsModel(classTag, BOT_KEY));
                 messageRVAdapter.notifyDataSetChanged();
 
                 // Scroll to the bottom of the chat list
