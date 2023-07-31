@@ -4,24 +4,80 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kau.yourkauguideapp.activities.MainActivity;
+
 import java.util.ArrayList;
+
+import android.os.Handler;
 
 public class MessageRVAdapter extends RecyclerView.Adapter {
 
     // variable for our array list and context.
-    private ArrayList<ChatsModel> chatsModelArrayList;
-    private Context context;
+    public static ArrayList<ChatsModel> chatsModelArrayList;
+    private UserViewHolder lastUserViewHolder;
+    private BotViewHolder lastBotViewHolder;
+    private final Context context;
+    ArrayList<String> buttonOptions = new ArrayList<>();
+    ArrayList<String> EmailsOptions = new ArrayList<>();
+    ArrayList<String> PlanssOptions = new ArrayList<>();
+    ArrayList<String> TraksOptions = new ArrayList<>();
 
-    // constructor class.
-    public MessageRVAdapter(ArrayList<ChatsModel> chatsModelArrayList, Context context) {
-        this.chatsModelArrayList = chatsModelArrayList;
+    private final ButtonOptionsHandler buttonOptionsHandler;
+    private final EmailsButtonOptionsHandler emailsOptionsHandler;
+    private final PlansButtonOptionsHandler plansOptionsHandler;
+    private final TraksButtonOptionsHandler traksOptionsHandler;
+    private final MainActivity mainActivity;
+
+
+    public MessageRVAdapter(ArrayList<ChatsModel> chatsModelArrayList, Context context, MainActivity mainActivity) {
+        MessageRVAdapter.chatsModelArrayList = chatsModelArrayList;
         this.context = context;
+        this.mainActivity = mainActivity;
+        this.buttonOptionsHandler = new ButtonOptionsHandler(buttonOptions, context, mainActivity);
+        this.emailsOptionsHandler = new EmailsButtonOptionsHandler(EmailsOptions, context, mainActivity);
+        this.plansOptionsHandler = new PlansButtonOptionsHandler(PlanssOptions, context, mainActivity);
+        this.traksOptionsHandler = new TraksButtonOptionsHandler(TraksOptions, context, mainActivity);
+
+
+        buttonOptions.add("جدول الاختبارات");
+        buttonOptions.add("مواقع تسكين القاعات");
+        buttonOptions.add("تغيير التخصص");
+        buttonOptions.add("التحويل الى كلية الحاسبات");
+        buttonOptions.add("شروط معادلة المواد");
+        buttonOptions.add("الخطط الدراسية والمواد");
+        buttonOptions.add("المسارات");
+        buttonOptions.add("الدورات");
+        buttonOptions.add("متطلبات التخرج");
+        buttonOptions.add("العودة الى المحادثة");
+
+        EmailsOptions.add("أيميل دكتور حسام لحظه");
+        EmailsOptions.add("أيميل دكتور وجدي الغامدي");
+        EmailsOptions.add("أيميل دكتور معصتم جراح");
+        EmailsOptions.add("أيميل دكتور مرشد الدربالي");
+        EmailsOptions.add("أيميل دكتور محمد باحداد");
+        EmailsOptions.add("العودة الى المحادثة");
+
+
+        PlanssOptions.add("خطة تقنية المعلومات");
+        PlanssOptions.add("خطة نظم المعلومات");
+        PlanssOptions.add("خطة علوم الحاسبات");
+
+        TraksOptions.add("مسار تقنية المعلومات");
+        TraksOptions.add("مسار نظم المعلومات");
+        TraksOptions.add("مسار علوم الحاسب");
+
+
     }
+
 
     @NonNull
     @Override
@@ -50,10 +106,37 @@ public class MessageRVAdapter extends RecyclerView.Adapter {
             case "user":
                 // below line is to set the text to our text view of user layout
                 ((UserViewHolder) holder).userTV.setText(modal.getMessage());
+                lastUserViewHolder = (UserViewHolder) holder;
+
                 break;
             case "bot":
                 // below line is to set the text to our text view of bot layout
                 ((BotViewHolder) holder).botTV.setText(modal.getMessage());
+                lastBotViewHolder = (BotViewHolder) holder;
+                System.out.println(modal.getMessage());
+
+                if (modal.getMessage().equals("اسف لم افهم ماذا تعني\n هذه بعض الأقتراحات لك")) {
+                    buttonOptionsHandler.showButtonOptions(((BotViewHolder) holder).linearLayout, (BotViewHolder) holder);
+                    modal.setMessage("تمام بحاول اساعدك ...");
+                    return;
+                }
+                if (modal.getMessage().equals("خطة اي قسم؟")) {
+                    plansOptionsHandler.showButtonOptions(((BotViewHolder) holder).linearLayout, (BotViewHolder) holder);
+                    modal.setMessage("تمام بحاول احصل الخطة ...");
+                    return;
+                }
+
+                if (modal.getMessage().equals("ايميل دكتور مين؟")) {
+                    emailsOptionsHandler.showButtonOptions(((BotViewHolder) holder).linearLayout, (BotViewHolder) holder);
+                    modal.setMessage("تمام بحاول احصل الايميل ...");
+                    return;
+                }
+
+                if (modal.getMessage().equals("مسارات اي قسم؟")) {
+                    traksOptionsHandler.showButtonOptions(((BotViewHolder) holder).linearLayout, (BotViewHolder) holder);
+                    modal.setMessage("جاري البحث عن المسارات ...");
+                    return;
+                }
                 break;
         }
     }
@@ -95,11 +178,19 @@ public class MessageRVAdapter extends RecyclerView.Adapter {
         // creating a variable
         // for our text view.
         TextView botTV;
+        Button button;
+        LinearLayout linearLayout;
 
         public BotViewHolder(@NonNull View itemView) {
             super(itemView);
             // initializing with id.
             botTV = itemView.findViewById(R.id.bot_textMessage);
+            button = itemView.findViewById(R.id.bot_button);
+            linearLayout = itemView.findViewById(R.id.linearButtons);
+
         }
+
     }
+
 }
+

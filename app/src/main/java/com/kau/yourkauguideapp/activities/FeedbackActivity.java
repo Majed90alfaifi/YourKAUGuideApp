@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kau.yourkauguideapp.R;
@@ -37,28 +36,35 @@ public class FeedbackActivity extends AppCompatActivity {
         TwitterButton=findViewById(R.id.TwitterButton);
         imageBack = findViewById(R.id.FimageBack);
 
-
         imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goBack();
+                System.exit(0);
             }
         });
 
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String feedback = userIsuueMsgEdt.getText().toString();
 
-                if (userIsuueMsgEdt.getText().toString().isEmpty()) {
+                if (feedback.isEmpty()) {
                     // if the edit text is empty display a toast message.
-                    Toast.makeText(FeedbackActivity.this, "Please enter your Issue..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FeedbackActivity.this, "الرجاء كتابة استفسارك..", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String feedback = userIsuueMsgEdt.getText().toString();
                 userFeedback(feedback);
 
                 // below line we are setting text in our edit text as empty
                 userIsuueMsgEdt.setText("");
+                goBack();
+            }
+        });
+
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
             }
         });
 
@@ -75,17 +81,16 @@ public class FeedbackActivity extends AppCompatActivity {
                     // If the Twitter app is not installed, open the Twitter website in a web browser
                     intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/FCITKAU"));
                 }
-
                 startActivity(intent);
             }
         });
-
     }
 
     void goBack(){
-        Intent intent = new Intent(this, ChatActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     private boolean isTwitterAppInstalled() {
         PackageManager pm = getPackageManager();
         try {
@@ -97,25 +102,21 @@ public class FeedbackActivity extends AppCompatActivity {
     }
 
     private void userFeedback(String feedback){
-        //send the issue to DB
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String userId = auth.getCurrentUser().getUid(); // get the current user's ID from Firebase Authentication
-        DatabaseReference ref = database.getReference("users").child(userId); // create a reference to the user's data in Firebase
+        DatabaseReference ref = database.getReference("users");
 
-        DatabaseReference messageRef = ref.child("feedback"); // create a child reference called "feedback" under the user's data
-
+        DatabaseReference messageRef = ref.push();
         messageRef.setValue(feedback).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                // message saved successfully
-                Toast.makeText(FeedbackActivity.this, "message saved successfully..", Toast.LENGTH_SHORT).show();
+                // Message saved successfully
+                Toast.makeText(FeedbackActivity.this, " تم الارسال بنجاح ..\n سيتم التعامل مع رسالتك قريبا ..", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                // failed to save message
-                Toast.makeText(FeedbackActivity.this, "failed to save message..", Toast.LENGTH_SHORT).show();
+                // Failed to save message
+                Toast.makeText(FeedbackActivity.this, "فشل في الارسال..", Toast.LENGTH_SHORT).show();
             }
         });
     }

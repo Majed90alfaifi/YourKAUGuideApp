@@ -1,59 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="end"
-    android:layout_margin="5dp"
-    android:elevation="8dp"
-    app:cardCornerRadius="8dp"
-    android:padding="@dimen/_4sdp">
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/transparent"
+    android:outlineSpotShadowColor="@android:color/transparent"
+    android:outlineAmbientShadowColor="@android:color/transparent">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="right"
+        android:foregroundGravity="right"
+        app:layout_anchorGravity="right"
+        android:background="@android:color/transparent"
+        app:cardBackgroundColor="@android:color/transparent"
+        android:outlineSpotShadowColor="@android:color/transparent"
+        android:outlineAmbientShadowColor="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            android:outlineAmbientShadowColor="@android:color/transparent">
+
+
+            <TextView
+                android:id="@+id/bot_textMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_received_message"
+                android:padding="@dimen/_12sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold"
+                android:textIsSelectable="true"
+                android:autoLink="web"
+                android:textColorLink="@color/DarkBlue"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:ellipsize="start"
+                app:layout_constraintWidth_percent="0.75"
+                android:outlineSpotShadowColor="@android:color/transparent"
+                android:outlineAmbientShadowColor="@android:color/transparent" />
+
+
+            <!--we are displaying user icon-->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/chatbot"
+                android:outlineSpotShadowColor="@android:color/transparent"
+                android:outlineAmbientShadowColor="@android:color/transparent" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:outlineAmbientShadowColor="@color/green">
-
-
-
-    <TextView
-        android:id="@+id/bot_textMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_marginLeft="@dimen/_4sdp"
-        android:background="@drawable/background_received_message"
-        android:padding="@dimen/_12sdp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="@dimen/_13ssp"
-        app:layout_constraintStart_toEndOf="@+id/imageProfile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.75"
-        />
-
-    <TextView
-        android:id="@+id/textDateTime"
+        android:id="@+id/linearButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:textColor="@color/Gray"
-        android:textSize="@dimen/_10ssp"
-        app:layout_constraintStart_toStartOf="@+id/bot_textMessage"
-        app:layout_constraintTop_toBottomOf="@+id/bot_textMessage"
-    />
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        android:layout_margin="10dp"
+        android:layout_gravity="right"
+        android:outlineSpotShadowColor="@android:color/transparent"
+        android:outlineAmbientShadowColor="@android:color/transparent"
+        android:visibility="gone">
 
-        <!--we are displaying user icon-->
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/chatbot" />
+        <Button
+            android:id="@+id/bot_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bot_textMessage"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:background="@drawable/button_background_lightgreen"
 
+            />
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>

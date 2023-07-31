@@ -20,25 +20,12 @@
         >
 
         <activity
-            android:name=".activities.Sign_upActivity"
-            android:exported="false"/>
-
-        <activity
-            android:name=".activities.Sign_inActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activities.ChatActivity"
-            android:exported="false"/>
-
-        <activity
             android:name=".activities.FeedbackActivity"
             android:exported="false"/>
 
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
-
 
             <intent-filter>
                 <action
@@ -52,9 +39,6 @@
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
-
-
-
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

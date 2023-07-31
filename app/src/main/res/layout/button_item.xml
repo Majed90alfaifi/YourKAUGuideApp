@@ -1,0 +1,8 @@
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/button_background_lightgreen"
+    android:textColor="@color/white"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:textSize="16sp" />

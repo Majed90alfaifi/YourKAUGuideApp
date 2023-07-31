@@ -5,20 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="#FFFFFF"
+    android:background="#7FDD83"
     tools:context=".activities.FeedbackActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="هل تعاني من مشكلة مع التطبيق ؟ "
-        android:textSize="23sp"
-        android:textColor="#004303"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:padding="16dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_17sdp"
+        android:text="Your Kau Guide"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/_60sdp"
         app:layout_constraintBottom_toBottomOf="@id/FimageBack"
         app:layout_constraintStart_toEndOf="@id/FimageBack"
-        app:layout_constraintTop_toTopOf="@id/FimageBack"/>
+        app:layout_constraintTop_toTopOf="@id/FimageBack" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/FimageBack"
@@ -26,7 +30,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginStart="@dimen/_11sdp"
         android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:padding="@dimen/_5sdp"
         android:src="@drawable/ic_back_img"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,25 +40,36 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_50sdp"
         android:orientation="vertical"
         android:gravity="center"
+        android:background="@color/white"
         android:padding="10dp">
 
-    <EditText
-        android:id="@+id/issueEditText"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="top|start"
-        android:background="@drawable/background_edit_text"
-        android:imeOptions="actionDone"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:paddingStart="@dimen/_16sdp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:text="هل تعاني من مشكلة؟"
+            android:textSize="@dimen/_19sdp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/issueEditText"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="top|start"
+            android:background="@drawable/background_edit_text"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingStart="@dimen/_16sdp"
         android:paddingEnd="@dimen/_16sdp"
-        android:textColorHint="@color/black"
-        android:hint="أكتب المشكلة التي واجهتك ..."
+            android:textColorHint="@color/black"
+            android:hint="هل واجهت صعوبات في الإجابة على أسئلتك !"
         />
 
 
@@ -69,24 +84,32 @@
         android:textStyle="bold"
         android:textSize="@dimen/_22sdp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:text="للمزيد من المعلومات قم بزيارة حساب كلية الحاسبات على تويتر"
-        android:textSize="15sp"
-        android:textColor="#004303"
-        android:gravity="center"
-        android:padding="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_17sdp"
+            android:text="للمزيد من المعلومات\n قم بزيارة حساب كلية الحاسبات على تويتر"
+            android:textSize="17sp"
+            android:textColor="#10401B"
+            android:gravity="center"
+            android:padding="16dp" />
 
-    <Button
-        android:id="@+id/TwitterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/img"
-        android:layout_gravity="center"
-        />
+        <Button
+            android:id="@+id/TwitterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img"
+            android:layout_gravity="center" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:text="Devplped by FCIT Student"
+            android:textSize="14sp"
+            android:textColor="#494E49"
+            android:gravity="center"
+            android:padding="16dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
