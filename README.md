@@ -1,21 +1,50 @@
-# YourKAUGuideApp
+# Your KAU Guide 🤖
 
-implementing a smart chatbot that can provide accurate and timely answers to students' inquiries quickly and easily.
-This will be achieved by implementing solutions that make information easily accessible to students
+AI-powered Arabic chatbot designed to help King Abdulaziz University students
+quickly access information about the Faculty of Computing and Information Technology (FCIT)
+and other university services.
 
-To improve the FCIT community’s experience using an AI chatbot.
+## 🎓 Graduation Project
 
-Arabic natural language processing will be used to accurately and quickly interact 
+This project was developed as a graduation project at King Abdulaziz University.
 
-Datasets from Twitter’s and Webpage`s FCIT will be utilized to answer the questions 
+## 🚀 Features
 
-Deep learning models will be used to train the chatbot and increase the accuracy of answers.
+- Arabic natural language processing
+- AI-powered student question answering
+- FCIT information and services
+- General KAU-related questions
+- Android mobile application
+- Machine learning / deep learning based chatbot
+- Firebase integration
 
-Front end : Android studio Java
-Back end : Firebase   , Pycharm , Python anywhere
-Libraries : torch, ISRI, Numpy ,NLTK , Snscrape
+## 🛠️ Tech Stack
 
-App Answer question in those domain :
-General Question like greating and thanks
-Question related to Fcit like plans , traks , majors , activity , doctor emails , exams seclude , laps location and more
-Other general kau Question like registration , delete terms  and more
+- Java / Android Studio
+- Python
+- PyTorch
+- NLTK
+- NumPy
+- ISRI Arabic NLP
+- Firebase
+
+## 🏗️ High-Level Architecture
+
+Student → Android App → NLP Processing → ML/DL Model → Knowledge/Data → Response
+
+## 💡 Project Goal
+
+The goal of Your KAU Guide is to make university information easier and
+faster for students to access through a conversational AI interface.
+
+## 📚 Project Domains
+
+The chatbot can handle questions related to:
+
+- FCIT majors and tracks
+- Courses and plans
+- Faculty and doctor information
+- Exams and schedules
+- Labs and locations
+- University registration
+- Other common student questions
